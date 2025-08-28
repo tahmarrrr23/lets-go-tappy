@@ -1,0 +1,16 @@
+{
+  "[javascript][javascriptreact][typescript][typescriptreact][scss][css]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+      "source.fixAll.stylelint": "explicit"
+    },
+    "editor.formatOnSave": true,
+    "editor.quickSuggestions": {
+      "strings": "on"
+    }
+  },
+  "css.validate": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "scss.validate": false,
+  "stylelint.validate": ["scss", "css"]
+}
