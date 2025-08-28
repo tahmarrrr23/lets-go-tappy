@@ -8,6 +8,7 @@ const compat = new FlatCompat({
 /** @type {import('@eslint/config-helpers').ConfigWithExtendsArray} */
 const config = [
   ...compat.extends("next/core-web-vitals", "next/typescript", "prettier"),
+  { rules: { "@next/next/no-img-element": "off" } },
 ];
 
 export default defineConfig(config);
