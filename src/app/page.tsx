@@ -4,7 +4,7 @@ import { AnalysisForm } from "@/components/analysis-form";
 import { TappyResult } from "@/components/tappy-result";
 import { devices } from "@/libs/device";
 import { AnalyzeResult } from "@lycorp-jp/tappy";
-import { Box, Container } from "@radix-ui/themes";
+import { Box } from "@radix-ui/themes";
 import { useState } from "react";
 
 export default function Root() {
@@ -35,7 +35,7 @@ export default function Root() {
   };
 
   return (
-    <Container size="3">
+    <>
       <AnalysisForm
         url={url}
         selectedDevice={selectedDevice}
@@ -50,6 +50,6 @@ export default function Root() {
           <TappyResult result={result} device={devices[selectedDevice]} />
         </Box>
       )}
-    </Container>
+    </>
   );
 }
