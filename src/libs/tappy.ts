@@ -15,7 +15,6 @@ const setupPuppeteer = async () => {
   } else {
     return await puppeteer.launch({
       headless: true,
-      channel: "chrome",
     });
   }
 };
