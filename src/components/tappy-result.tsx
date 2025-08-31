@@ -1,12 +1,11 @@
-import { AnalyzeResult, Device } from "@lycorp-jp/tappy";
+import { AnalyzeResult } from "@lycorp-jp/tappy";
 import { Box } from "@radix-ui/themes";
 
 export type TappyResultProps = {
   result: AnalyzeResult;
-  device: Device;
 };
 
-export const TappyResult = ({ result, device }: TappyResultProps) => {
+export const TappyResult = ({ result }: TappyResultProps) => {
   return (
     <Box
       style={{
@@ -19,7 +18,7 @@ export const TappyResult = ({ result, device }: TappyResultProps) => {
         src={`data:image/png;base64,${result.screenshot}`}
         alt="Screenshot"
         style={{
-          width: `${device.width}px`,
+          width: `${result.device.width}px`,
           display: "block",
         }}
       />
