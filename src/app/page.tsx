@@ -2,7 +2,6 @@
 
 import { AnalysisForm } from "@/components/analysis-form";
 import { TappyResult } from "@/components/tappy-result";
-import { devices } from "@/libs/device";
 import { AnalyzeResult } from "@lycorp-jp/tappy";
 import { Box } from "@radix-ui/themes";
 import { useState } from "react";
@@ -47,7 +46,7 @@ export default function Root() {
 
       {result && (
         <Box mt="350px" className="text-center">
-          <TappyResult result={result} device={devices[selectedDevice]} />
+          <TappyResult result={result} />
         </Box>
       )}
     </>
