@@ -1,15 +1,7 @@
 "use client";
 
 import { devices } from "@/libs/device";
-import {
-  Box,
-  Button,
-  Container,
-  Flex,
-  Select,
-  Text,
-  TextField,
-} from "@radix-ui/themes";
+import { Box, Button, Flex, Select, TextField } from "@radix-ui/themes";
 
 interface AnalysisFormProps {
   url: string;
@@ -32,76 +24,43 @@ export function AnalysisForm({
 
   return (
     <Box
-      p="9"
-      position={"fixed"}
-      top={"0"}
-      left={"0"}
+      p="4"
       width={"100%"}
-      style={{
-        backgroundColor: "white",
-        zIndex: 1000,
-        border: "1px solid var(--gray-6)",
-      }}
+      className="bg-white z-50 border-b-gray-100 border-b-2"
     >
-      <Container size="2">
-        <Flex direction="column" gap="5">
-          {/* URL input */}
-          <Box>
-            <Flex direction="column" gap="2">
-              <Text as="label" size="3" weight="bold" color="gray">
-                URL
-              </Text>
-              <TextField.Root
-                placeholder="https://example.com"
-                value={url}
-                onChange={(e) => onUrlChange(e.target.value)}
-                size="3"
-                style={{ width: "100%" }}
-              />
-            </Flex>
-          </Box>
+      <Flex justify="end" align="center" gap="2">
+        <TextField.Root
+          placeholder="https://example.com"
+          value={url}
+          onChange={(e) => onUrlChange(e.target.value)}
+          size="3"
+        />
 
-          {/* Device selection */}
-          <Box>
-            <Flex direction="column" gap="2">
-              <Text as="label" size="3" weight="bold" color="gray">
-                Device
-              </Text>
-              <Select.Root
-                value={selectedDevice}
-                size="3"
-                onValueChange={onDeviceChange}
-              >
-                <Select.Trigger
-                  placeholder="Please select a device"
-                  style={{ width: "100%" }}
-                />
-                <Select.Content position="popper" sideOffset={4}>
-                  <Select.Group>
-                    {deviceNames.map((deviceName) => (
-                      <Select.Item key={deviceName} value={deviceName}>
-                        {deviceName}
-                      </Select.Item>
-                    ))}
-                  </Select.Group>
-                </Select.Content>
-              </Select.Root>
-            </Flex>
-          </Box>
+        <Select.Root
+          value={selectedDevice}
+          size="3"
+          onValueChange={onDeviceChange}
+        >
+          <Select.Trigger placeholder="Please select a device" />
+          <Select.Content position="popper" sideOffset={4}>
+            <Select.Group>
+              {deviceNames.map((deviceName) => (
+                <Select.Item key={deviceName} value={deviceName}>
+                  {deviceName}
+                </Select.Item>
+              ))}
+            </Select.Group>
+          </Select.Content>
+        </Select.Root>
 
-          {/* Execute button */}
-          <Box pt="2">
-            <Button
-              size="3"
-              onClick={onExecute}
-              disabled={isLoading || !url || !selectedDevice}
-              style={{ width: "100%" }}
-            >
-              {isLoading ? "Executing..." : "Execute"}
-            </Button>
-          </Box>
-        </Flex>
-      </Container>
+        <Button
+          size="3"
+          onClick={onExecute}
+          disabled={isLoading || !url || !selectedDevice}
+        >
+          {isLoading ? "Executing..." : "Execute"}
+        </Button>
+      </Flex>
     </Box>
   );
 }
