@@ -1,9 +1,11 @@
 "use client";
 
 import { AnalysisForm } from "@/components/analysis-form";
+import { DeviceMock } from "@/components/device-mock";
 import { TappyResult } from "@/components/tappy-result";
+import { devices } from "@/libs/device";
 import { AnalyzeResult } from "@lycorp-jp/tappy";
-import { Box } from "@radix-ui/themes";
+import { Flex } from "@radix-ui/themes";
 import { useState } from "react";
 
 export default function Root() {
@@ -44,10 +46,17 @@ export default function Root() {
         onExecute={handleExecute}
       />
 
-      {result && (
-        <Box mt="350px" className="text-center">
-          <TappyResult result={result} />
-        </Box>
+      {selectedDevice && devices[selectedDevice] && (
+        <Flex
+          justify="center"
+          align="center"
+          width="100%"
+          minHeight="calc(100vh - 74px)"
+        >
+          <DeviceMock device={devices[selectedDevice]}>
+            {result && <TappyResult result={result} />}
+          </DeviceMock>
+        </Flex>
       )}
     </>
   );
