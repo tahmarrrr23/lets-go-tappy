@@ -1,5 +1,5 @@
 {
-  "name": "tappy-playground",
+  "name": "lets-go-tappy",
   "private": true,
   "scripts": {
     "build": "next build",
