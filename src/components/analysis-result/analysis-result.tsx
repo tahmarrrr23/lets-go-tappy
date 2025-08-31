@@ -1,11 +1,11 @@
 import { AnalyzeResult } from "@lycorp-jp/tappy";
 import { Box } from "@radix-ui/themes";
 
-export type TappyResultProps = {
+export type AnalysisResultProps = {
   result: AnalyzeResult;
 };
 
-export const TappyResult = ({ result }: TappyResultProps) => {
+export const AnalysisResult = ({ result }: AnalysisResultProps) => {
   return (
     <Box
       style={{
@@ -23,7 +23,6 @@ export const TappyResult = ({ result }: TappyResultProps) => {
         }}
       />
 
-      {/* Overlay tappable elements */}
       {result.elements.map((element, index) => (
         <Box
           key={index}
@@ -39,7 +38,6 @@ export const TappyResult = ({ result }: TappyResultProps) => {
             borderRadius: "2px",
           }}
         >
-          {/* Success rate label */}
           <Box
             style={{
               position: "absolute",

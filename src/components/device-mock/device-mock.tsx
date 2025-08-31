@@ -1,19 +1,18 @@
-"use client";
-
 import { Device } from "@lycorp-jp/tappy";
-import { ComponentPropsWithoutRef } from "react";
-import styles from "./device-mock.module.scss";
 import { Card } from "@radix-ui/themes";
-export interface DeviceMockProps extends ComponentPropsWithoutRef<"div"> {
+import { PropsWithChildren } from "react";
+import styles from "./device-mock.module.scss";
+
+export interface DeviceMockProps extends PropsWithChildren {
   device: Device;
 }
 
 export const DeviceMock = (props: DeviceMockProps) => {
-  const { device, children, ...rest } = props;
+  const { device, children } = props;
 
   return (
-    <Card {...rest}>
-      <div className={`${styles["root"]}`}>
+    <Card>
+      <div className={styles["container"]}>
         <div
           style={{
             width: `${device.width}px`,

@@ -1,9 +1,9 @@
-.root {
+.container {
   overflow: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-.root::-webkit-scrollbar {
+.container::-webkit-scrollbar {
   display: none;
 }

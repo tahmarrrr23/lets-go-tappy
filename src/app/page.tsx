@@ -1,16 +1,16 @@
 "use client";
 
 import { AnalysisForm } from "@/components/analysis-form";
+import { AnalysisResult } from "@/components/analysis-result";
 import { DeviceMock } from "@/components/device-mock";
-import { TappyResult } from "@/components/tappy-result";
 import { devices } from "@/libs/device";
 import { AnalyzeResult } from "@lycorp-jp/tappy";
-import { Flex } from "@radix-ui/themes";
+import { Flex, Spinner } from "@radix-ui/themes";
 import { useState } from "react";
 
 export default function Root() {
   const [url, setUrl] = useState("");
-  const [selectedDevice, setSelectedDevice] = useState("");
+  const [selectedDevice, setSelectedDevice] = useState("iPhone 16 Pro Max");
   const [result, setResult] = useState<AnalyzeResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -46,18 +46,21 @@ export default function Root() {
         onExecute={handleExecute}
       />
 
-      {selectedDevice && devices[selectedDevice] && (
-        <Flex
-          justify="center"
-          align="center"
-          width="100%"
-          minHeight="calc(100vh - 74px)"
-        >
-          <DeviceMock device={devices[selectedDevice]}>
-            {result && <TappyResult result={result} />}
-          </DeviceMock>
-        </Flex>
-      )}
+      <Flex
+        justify="center"
+        align="center"
+        width="100%"
+        minHeight="calc(100vh - 74px)"
+      >
+        <DeviceMock device={devices[selectedDevice]}>
+          {isLoading && (
+            <Flex justify="center" align="center" height="100%">
+              <Spinner />
+            </Flex>
+          )}
+          {result && <AnalysisResult result={result} />}
+        </DeviceMock>
+      </Flex>
     </>
   );
 }
