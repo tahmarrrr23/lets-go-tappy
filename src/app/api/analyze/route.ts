@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
-import { analyze } from "@/libs/tappy";
+import { type NextRequest, NextResponse } from "next/server";
 import { devices } from "@/libs/device";
+import { analyze } from "@/libs/tappy";
 
 export async function POST(request: NextRequest) {
   try {

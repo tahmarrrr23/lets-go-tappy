@@ -1,4 +1,4 @@
-import { AnalyzeResult } from "@lycorp-jp/tappy";
+import type { AnalyzeResult } from "@lycorp-jp/tappy";
 import { Box } from "@radix-ui/themes";
 
 export type AnalysisResultProps = {
@@ -23,9 +23,9 @@ export const AnalysisResult = ({ result }: AnalysisResultProps) => {
         }}
       />
 
-      {result.elements.map((element, index) => (
+      {result.elements.map((element) => (
         <Box
-          key={index}
+          key={`${element.left}-${element.top}-${element.width}-${element.height}`}
           style={{
             position: "absolute",
             left: `${element.left}px`,

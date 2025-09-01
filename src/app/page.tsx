@@ -1,12 +1,12 @@
 "use client";
 
+import type { AnalyzeResult } from "@lycorp-jp/tappy";
+import { Flex, Spinner } from "@radix-ui/themes";
+import { useState } from "react";
 import { AnalysisForm } from "@/components/analysis-form";
 import { AnalysisResult } from "@/components/analysis-result";
 import { DeviceMock } from "@/components/device-mock";
 import { devices } from "@/libs/device";
-import { AnalyzeResult } from "@lycorp-jp/tappy";
-import { Flex, Spinner } from "@radix-ui/themes";
-import { useState } from "react";
 
 export default function Root() {
   const [url, setUrl] = useState("");

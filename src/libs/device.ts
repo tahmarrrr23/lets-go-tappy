@@ -1,4 +1,4 @@
-import { Device } from "@lycorp-jp/tappy";
+import type { Device } from "@lycorp-jp/tappy";
 
 const devices: { [key: string]: Device } = {
   // iPhone 16 series

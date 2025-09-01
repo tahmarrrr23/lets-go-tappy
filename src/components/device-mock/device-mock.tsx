@@ -1,6 +1,6 @@
-import { Device } from "@lycorp-jp/tappy";
+import type { Device } from "@lycorp-jp/tappy";
 import { Card } from "@radix-ui/themes";
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 import styles from "./device-mock.module.scss";
 
 export interface DeviceMockProps extends PropsWithChildren {
@@ -12,7 +12,7 @@ export const DeviceMock = (props: DeviceMockProps) => {
 
   return (
     <Card>
-      <div className={styles["container"]}>
+      <div className={styles.container}>
         <div
           style={{
             width: `${device.width}px`,
