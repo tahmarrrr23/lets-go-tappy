@@ -1,7 +1,7 @@
 {
   "[javascript][javascriptreact][typescript][typescriptreact][scss][css]": {
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit",
+      "source.fixAll.biome": "explicit",
       "source.fixAll.stylelint": "explicit"
     },
     "editor.formatOnSave": true,
@@ -10,7 +10,7 @@
     }
   },
   "css.validate": false,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "biomejs.biome",
   "scss.validate": false,
   "stylelint.validate": ["scss", "css"]
 }
