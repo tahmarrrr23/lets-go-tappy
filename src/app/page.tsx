@@ -11,6 +11,7 @@ import { devices } from "@/libs/device";
 export default function Root() {
   const [url, setUrl] = useState("");
   const [selectedDevice, setSelectedDevice] = useState("iPhone 16 Pro Max");
+  const [wait, setWait] = useState(1000);
   const [result, setResult] = useState<AnalyzeResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -26,6 +27,7 @@ export default function Root() {
       body: JSON.stringify({
         url,
         deviceName: selectedDevice,
+        wait,
       }),
     });
 
@@ -40,9 +42,11 @@ export default function Root() {
       <AnalysisForm
         url={url}
         selectedDevice={selectedDevice}
+        wait={wait}
         isLoading={isLoading}
         onUrlChange={setUrl}
         onDeviceChange={setSelectedDevice}
+        onWaitChange={setWait}
         onExecute={handleExecute}
       />
 
@@ -50,7 +54,7 @@ export default function Root() {
         justify="center"
         align="center"
         width="100%"
-        minHeight="calc(100vh - 74px)"
+        minHeight="calc(100vh - 130px)"
       >
         <DeviceMock device={devices[selectedDevice]}>
           {isLoading && (

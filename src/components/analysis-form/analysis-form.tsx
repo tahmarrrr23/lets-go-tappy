@@ -5,24 +5,28 @@ import { devices } from "../../libs/device";
 interface AnalysisFormProps {
   url: string;
   selectedDevice: string;
+  wait: number;
   isLoading: boolean;
   onUrlChange: (url: string) => void;
   onDeviceChange: (device: string) => void;
+  onWaitChange: (wait: number) => void;
   onExecute: () => void;
 }
 
 export function AnalysisForm({
   url,
   selectedDevice,
+  wait,
   isLoading,
   onUrlChange,
   onDeviceChange,
+  onWaitChange,
   onExecute,
 }: AnalysisFormProps) {
   const deviceOptions = Object.keys(devices);
 
   return (
-    <Flex align="center" gap="2" p="4">
+    <Flex gap="2" p="4">
       <Box width="100%">
         <TextField.Root
           type="url"
@@ -50,6 +54,17 @@ export function AnalysisForm({
               </Select.Content>
             </Select.Root>
           </TextField.Slot>
+        </TextField.Root>
+      </Box>
+
+      <Box>
+        <TextField.Root
+          type="number"
+          value={wait.toString()}
+          onChange={(e) => onWaitChange(Number(e.target.value))}
+          size="3"
+        >
+          <TextField.Slot side="right">ms</TextField.Slot>
         </TextField.Root>
       </Box>
 
