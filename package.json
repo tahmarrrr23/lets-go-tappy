@@ -1,11 +1,12 @@
 {
   "name": "lets-go-tappy",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "next build",
-    "clean": "rimraf .next",
+    "build": "next build --turbopack",
     "dev": "next dev --turbopack",
-    "lint": "next lint",
+    "format": "biome format --write",
+    "lint": "biome check",
     "start": "next start"
   },
   "dependencies": {
