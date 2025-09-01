@@ -4,7 +4,6 @@ import puppeteer from "puppeteer";
 
 const setupPuppeteer = async () => {
   const isVercel = !!process.env.VERCEL_ENV;
-
   if (isVercel) {
     const chromium = (await import("@sparticuz/chromium")).default;
     return await puppeteer.launch({
@@ -24,9 +23,10 @@ export const analyze = async (url: string, device: Device) => {
   const page = await browser.newPage();
 
   const adapter = new PuppeteerAdapter(page);
-  const tappy = new Tappy(adapter);
+  await adapter.page.goto(url);
 
-  const result = await tappy.analyze(url, device);
+  const tappy = new Tappy(adapter);
+  const result = await tappy.analyze(device);
   await browser.close();
 
   return result;
