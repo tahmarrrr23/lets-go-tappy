@@ -1,27 +1,25 @@
 import { type Device, Tappy } from "@lycorp-jp/tappy";
 import { PuppeteerAdapter } from "@lycorp-jp/tappy/adapters";
-import puppeteer, { type LaunchOptions } from "puppeteer";
+import puppeteer from "puppeteer";
 
-const getLaunchOptions = async (): Promise<LaunchOptions> => {
+const setup = async () => {
   if (process.env.VERCEL_ENV) {
     const chromium = (await import("@sparticuz/chromium")).default;
-    return {
+    return await puppeteer.launch({
       headless: true,
       args: chromium.args,
       executablePath: await chromium.executablePath(),
-    };
+    });
   } else {
-    return {
+    return await puppeteer.launch({
       headless: true,
       channel: "chrome",
-    };
+    });
   }
 };
 
 export const analyze = async (url: string, device: Device, wait: number) => {
-  const launchOptions = await getLaunchOptions();
-
-  const browser = await puppeteer.launch(launchOptions);
+  const browser = await setup();
   const page = await browser.newPage();
 
   const adapter = new PuppeteerAdapter(page);
