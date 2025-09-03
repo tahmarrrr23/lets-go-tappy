@@ -42,7 +42,7 @@ export function AnalysisForm({
             <Select.Root
               value={selectedDevice}
               onValueChange={onDeviceChange}
-              size="2"
+              size="3"
             >
               <Select.Trigger placeholder="Device" variant="ghost" />
               <Select.Content>
