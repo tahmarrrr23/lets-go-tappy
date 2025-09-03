@@ -62,7 +62,11 @@ export default function Root() {
               <Spinner />
             </Flex>
           )}
-          {result && <AnalysisResult result={result} />}
+          {result ? (
+            <AnalysisResult result={result} />
+          ) : (
+            <div>{`${devices[selectedDevice].width} x ${devices[selectedDevice].height}`}</div>
+          )}
         </DeviceMock>
       </Flex>
     </>
