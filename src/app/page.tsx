@@ -37,6 +37,11 @@ export default function Root() {
     setIsLoading(false);
   };
 
+  const handleDeviceChange = (deviceName: string) => {
+    setResult(null);
+    setSelectedDevice(deviceName);
+  };
+
   return (
     <>
       <AnalysisForm
@@ -45,7 +50,7 @@ export default function Root() {
         wait={wait}
         isLoading={isLoading}
         onUrlChange={setUrl}
-        onDeviceChange={setSelectedDevice}
+        onDeviceChange={handleDeviceChange}
         onWaitChange={setWait}
         onExecute={handleExecute}
       />
