@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Theme
-          radius="full"
+          radius="large"
           appearance="dark"
           accentColor="pink"
           grayColor="mauve"
