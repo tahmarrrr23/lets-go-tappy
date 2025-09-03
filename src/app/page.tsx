@@ -10,7 +10,7 @@ import { devices } from "@/libs/device";
 
 export default function Root() {
   const [url, setUrl] = useState("");
-  const [selectedDevice, setSelectedDevice] = useState("iPhone 16 Pro Max");
+  const [selectedDevice, setSelectedDevice] = useState("VGA");
   const [wait, setWait] = useState(1000);
   const [result, setResult] = useState<AnalyzeResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -54,7 +54,7 @@ export default function Root() {
         justify="center"
         align="center"
         width="100%"
-        minHeight="calc(100vh - 130px)"
+        minHeight="calc(100vh - 72px)"
       >
         <DeviceMock device={devices[selectedDevice]}>
           {isLoading && (
