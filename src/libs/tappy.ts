@@ -1,30 +1,31 @@
 import { type Device, Tappy } from "@lycorp-jp/tappy";
 import { PuppeteerAdapter } from "@lycorp-jp/tappy/adapters";
+import puppeteer, { type LaunchOptions } from "puppeteer-core";
 
-const setupPuppeteer = async () => {
-  const isVercel = !!process.env.VERCEL_ENV;
-  if (isVercel) {
+const getLaunchOptions = async (): Promise<LaunchOptions> => {
+  if (process.env.VERCEL_ENV) {
     const chromium = (await import("@sparticuz/chromium")).default;
-    const puppeteer = await import("puppeteer-core");
-    return await puppeteer.launch({
+    return {
       headless: true,
       args: chromium.args,
       executablePath: await chromium.executablePath(),
-    });
+    };
   } else {
-    const puppeteer = await import("puppeteer");
-    return await puppeteer.launch({
+    return {
       headless: true,
-    });
+      channel: "chrome",
+    };
   }
 };
 
 export const analyze = async (url: string, device: Device, wait: number) => {
-  const browser = await setupPuppeteer();
+  const launchOptions = await getLaunchOptions();
+
+  const browser = await puppeteer.launch(launchOptions);
   const page = await browser.newPage();
 
-  // biome-ignore lint/suspicious/noExplicitAny: Type compatibility issue between puppeteer and puppeteer-core
-  const adapter = new PuppeteerAdapter(page as any);
+  // @ts-expect-error
+  const adapter = new PuppeteerAdapter(page);
   await adapter.page.setViewport({
     width: device.width,
     height: device.height,
