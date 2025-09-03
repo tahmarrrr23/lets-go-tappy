@@ -23,9 +23,9 @@ export const AnalysisResult = ({ result }: AnalysisResultProps) => {
         }}
       />
 
-      {result.elements.map((element) => (
+      {result.elements.map((element, idx) => (
         <Box
-          key={`${element.left}-${element.top}-${element.width}-${element.height}`}
+          key={`${idx}-${element.left}-${element.top}-${element.width}-${element.height}-${element.tapSuccessRate}`}
           style={{
             position: "absolute",
             left: `${element.left}px`,
