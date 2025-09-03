@@ -15,7 +15,7 @@
     "@radix-ui/themes": "^3.2.1",
     "@sparticuz/chromium": "^138.0.2",
     "next": "15.5.2",
-    "puppeteer": "^24.18.0",
+    "puppeteer": "24.17.1",
     "react": "19",
     "react-dom": "19"
   },
