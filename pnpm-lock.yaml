@@ -23,9 +23,9 @@ importers:
       next:
         specifier: 15.5.2
         version: 15.5.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.91.0)
-      puppeteer-core:
+      puppeteer:
         specifier: ^24.18.0
-        version: 24.18.0
+        version: 24.18.0(typescript@5.9.2)
       react:
         specifier: '19'
         version: 19.1.1
@@ -3788,7 +3788,6 @@ snapshots:
       - supports-color
       - typescript
       - utf-8-validate
-    optional: true
 
   queue-microtask@1.2.3: {}
 

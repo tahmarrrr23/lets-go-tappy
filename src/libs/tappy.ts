@@ -1,6 +1,6 @@
 import { type Device, Tappy } from "@lycorp-jp/tappy";
 import { PuppeteerAdapter } from "@lycorp-jp/tappy/adapters";
-import puppeteer, { type LaunchOptions } from "puppeteer-core";
+import puppeteer, { type LaunchOptions } from "puppeteer";
 
 const getLaunchOptions = async (): Promise<LaunchOptions> => {
   if (process.env.VERCEL_ENV) {
@@ -24,7 +24,6 @@ export const analyze = async (url: string, device: Device, wait: number) => {
   const browser = await puppeteer.launch(launchOptions);
   const page = await browser.newPage();
 
-  // @ts-expect-error
   const adapter = new PuppeteerAdapter(page);
   await adapter.page.setViewport({
     width: device.width,

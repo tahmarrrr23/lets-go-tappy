@@ -2,9 +2,9 @@
 const config = {
   devIndicators: false,
   serverExternalPackages: [
-    "@sparticuz/chromium",
-    "puppeteer-core",
     "@lycorp-jp/tappy",
+    "@sparticuz/chromium",
+    "puppeteer",
   ],
 };
 
